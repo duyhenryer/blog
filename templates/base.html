@@ -1,17 +1,10 @@
 {% load staticfiles %}
 
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 <meta charset="UTF-8">
-<!-- Latest compiled and minified CSS -->
+<title> {% block head_title  %}iShare {% endblock head_title %}</title>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
-<!-- Optional theme -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="{% static "css/base.css" %}"/>
 
@@ -19,7 +12,6 @@
 {% block style %} {% endblock style %}
 </style>
 </head>
-
 <body>
 {% include  "messages_display.html"%}
 
@@ -28,6 +20,16 @@
 
 {% endblock content %}
 </div>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 </body>
+<footer class="footer">
+    <div class="container" >
+        <div class="footerish">
+            &copy;2017-{% now 'Y' %} | PROJECT-FALL-TON DUC THANG UNIVERSITY(2017-2018)
+        </div>
+    </div>
+
+</footer>
+
 </html>
