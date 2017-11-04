@@ -37,8 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'social_django',
+     
+    # 'comments',
     'posts',
+    'accounts',
+    'profiles',
+    # 'authtools',
+    # 'easy_thumbnails',
+
 ]
+# INSTALLED_APPS += ('django.contrib.sites', 'django.contrib.comments',)
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -48,8 +60,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # -------------------------------------------------------------
+
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
+LOGIN_URL = "/login/"
+LOGOUT_URL = 'logout'
+# LOGIN_REDIRECT_URL = 'home'
 ROOT_URLCONF = 'blog.urls'
 
 TEMPLATES = [
@@ -58,12 +76,17 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'templates')]
         ,
         'APP_DIRS': True,
-        'OPTIONS': {
+        'OPTIO'
+        'NS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # -------------------------------------------------------------
+                'social_django.context_processors.backends',  # <--
+                'social_django.context_processors.login_redirect',  # <--
             ],
         },
     },
@@ -100,6 +123,15 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 
 # Internationalization
