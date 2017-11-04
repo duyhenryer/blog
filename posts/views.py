@@ -8,25 +8,24 @@ from django.db.models import Q
 from .models import Post
 from .forms import PostForm
 from comments.forms import CommentForm
-from comments.models import Comment
+import comments.models
 from django.utils import timezone
-
 
 
 def post_create(request):
     if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
+
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.user = request.user
         instance.save()
-        #messages success
-        return render(request, "post_list.html")
-        # messages.success(request,"scusses ")
-        # return HttpResponseRedirect(instance.get_absolute_url())
+        # message success
+        # messages.success(request,"post_list.hmtl")
+        return HttpResponseRedirect(instance.get_absolute_url())
     context = {
-            "form": form,
+        "form": form,
     }
     return render(request, "post_form.html", context)
 
@@ -39,90 +38,42 @@ def post_detail(request,slug=None):
             "object_id": instance.id,
         }
 
-    form = CommentForm(request.POST or None, initial=initial_data)
-    if form.is_valid() and request.user.is_authenticated():
+    # form = CommentForm(request.POST or None, initial=initial_data)
+    # if form.is_valid() and request.user.is_authenticated():
+    #     c_type = form.cleaned_data.get("content_type")
+    #     content_type = ContentType.objects.get(model=c_type)
+    #     obj_id = form.cleaned_data.get('object_id')
+    #     content_data = form.cleaned_data.get("content")
+    #     parent_obj = None
+    #     try:
+    #         parent_id = int(request.POST.get("parent_id"))
+    #     except:
+    #         parent_id = None
+    #
+    #     if parent_id:
+    #         parent_qs = Comment.objects.filter(id=parent_id)
+    #         if parent_qs.exists() and parent_qs.count() == 1:
+    #             parent_obj = parent_qs.first()
+    #
+    #     new_comment, created = Comment.objects.get_or_create(
+    #         user=request.user,
+    #         content_type=content_type,
+    #         object_id=obj_id,
+    #         content=content_data,
+    #         parent=parent_obj,
+    #     )
+    #     return HttpResponseRedirect(new_comment.content_object.get_absolute_url())
 
-        # new_comment = form.save(commit=False)
-        # new_comment.post = Post
-        # new_comment.save()
-
-        c_type = form.cleaned_data.get("content_type")
-        content_type = ContentType.objects.get(model=c_type)
-        obj_id = form.cleaned_data.get('object_id')
-        content_data = form.cleaned_data.get("content")
-        # new_comment, created = Comment.objects.get_or_create(
-        #     user=request.user,
-        #     content_type=content_type,
-        #     object_id=obj_id,
-        #     content=content_data,
-        # )
-
-        content = {
-            "content_type": content_type,
-            "obj_id": obj_id,
-            "content_data": content_data,
-        }
-
-        # return HttpResponseRedirect(content_object.get_absolute_url())
-        return render(request, content)
-    # comments = instance.comments
-
-
+    # Comments = instance.comments
     context = {
         "title": instance.title,
         "instance": instance,
         "share_string": share_string,
-        "comment_form": form,
+        # "comments": Comment,
+        # "comment_form": form,
     }
-
-
     return render(request, "post_detail.html", context)
 
-
-#
-# def post_detail(request,slug=None):
-#     instance = get_object_or_404(Post, slug=slug)
-#     share_string = quote_plus(instance.content)
-#     # content_type = ContentType.objects.ge
-# t_for_model(Post)
-#     # obj_id = instance.id
-#     comments = Comment.objects.filter_by_instance(instance)
-#
-#     initial_data = {
-#             "content_type": instance.get_content_type,
-#             "object_id": instance.id,
-#         }
-#     form = CommentForm(request.POST or None, initial=initial_data)
-#     if form.is_valid():
-#         print(form.cleaned_data)
-#
-#         c_type = form.cleaned_data.get("content_type")
-#         content_type = ContentType.objects.get(model=c_type)
-#         obj_id = form.cleaned_data.get("object_id")
-#         content_data = form.cleaned_data.get("content")
-#         new_comment, created = Comment.objects.get_or_create(
-#             user=request.user,
-#             content_type=content_type,
-#             object_id=obj_id,
-#             content=content_data,
-#         )
-#         #
-#         # if created:
-#         #     print("Yeeeee....")
-#
-#     comments = instance.comments
-#     context = {
-#         "title": instance.title,
-#         "instance": instance,
-#         "share_string": share_string,
-#         "comments": comments,
-#         "comment_form": form,
-#
-#     }
-#
-#     return render(request, "post_detail.html", context)
-#
-#
 
 def post_list(request):
     today = timezone.now().date()
@@ -163,7 +114,7 @@ def post_update(request, slug=None):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
-        messages.success(request, "<a href='#'>item</a> saved", extra_tags='html_safe')
+        messages.success(request, "<a href='/'>come back home</a> ", extra_tags='html_safe')
         return HttpResponseRedirect(instance.get_absolute_url())
 
     content = {
@@ -172,7 +123,7 @@ def post_update(request, slug=None):
         "form": form,
     }
 
-    return render(request,"post_form.html", content)
+    return render(request,"post_edit.html", content)
 
 def post_delete(request, slug=None):
     if not request.user.is_staff or not request.user.is_superuser:

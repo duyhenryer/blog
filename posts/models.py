@@ -1,12 +1,17 @@
-from django.db import models
 from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
+from django.db import models
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
+# from comments.models import Comment
 
 
 def upload_location(instance, filename):
-    return "%s/%s" %(instance.id, filename)
+    PostModel = instance.__class__
+    new_id = PostModel.objects.order_by("id").last().id + 1
+    return "%s/%s" %(instance, filename)
+
 
 class Post(models.Model):
     # user
@@ -33,8 +38,22 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("posts:detail", kwargs={"slug": self.slug})
 
+
     class Meta:
         ordering = ["-timestamp", "-updated"]
+
+    # @property
+    # def comments(self):
+    #     instance = self
+    #     qs = Comment.objects.filter_by_instance(instance)
+    #     return qs
+    #
+    #
+    # @property
+    def get_content_type(self):
+        instance = self
+        content_type = ContentType.objects.get_for_model(instance.__class__)
+        return content_type
 
 def create_slug(instance, new_slug=None):
     slug = slugify(instance.title)
