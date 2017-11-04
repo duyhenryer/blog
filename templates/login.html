@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class='col-sm-6 col-sm-offset-3'>
+<h1>{{ title }}</h1>
+<hr/>
+
+<form method='POST' action='' enctype='multipart/form-data'>
+    {% csrf_token %}
+{{ form|crispy }}
+<input type='submit' class='btn btn-default' value='{{ title }}' />
+</form>
+
+  <br>
+  <p><strong>-- OR --</strong></p>
+<!--Pulling Awesome Font -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <div class="col-md-12">
+        <ul class="social-network social-circle">
+            <li><a href="{% url 'social:begin' 'facebook' %}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="{% url 'social:begin' 'twitter' %}" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="{% url 'social:begin' 'github' %}" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
+            <li><a href="{% url 'social:begin' 'instagram' %}" class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+    </div>
+
+
+</div>
+{% endblock content %}%}

@@ -2,9 +2,18 @@
 
 <head>
 <meta charset="UTF-8">
-<title> {% block head_title  %}ExplorePic {% endblock head_title %}</title>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<title> {% block head_title  %}Want to join? {% endblock head_title %}</title>
+
+{#<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">#}
+{#<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">#}
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="{% static "css/base.css" %}"/>
 
@@ -20,16 +29,94 @@
 
 {% endblock content %}
 </div>
+
+
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".content-markdown img").each(function () {
+            $(this).addClass("img-responsive");
+        })
+
+    })
+
+</script>
+
+
+{% block footer %}
+
 </body>
-<footer class="footer">
-    <div class="container" >
-        <div class="footerish">
-            &copy;2017-{% now 'Y' %} | PROJECT-FALL-TON DUC THANG UNIVERSITY(2017-2018)
-        </div>
+{##}
+{#    {% block social %}#}
+{#        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">#}
+{#        <div class="container-fluid">#}
+{#            <div class="row">#}
+{#                <div class="sicon">#}
+{#                    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3 text-center">#}
+{#                        <div class="icon-circle">#}
+{#                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="ifacebook" title="Facebook"><i class="fa fa-facebook"></i></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3 text-center">#}
+{#                        <div class="icon-circle">#}
+{#                            <a href="https://twitter.com/home?status={{ share_string }}%20{{ request.build_absolute_uri }}" class="itwittter" title="Twitter"><i class="fa fa-twitter"></i></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3 text-center">#}
+{#                        <div class="icon-circle">#}
+{#                            <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ share_string }}" class="igoogle" title="Google+"><i class="fa fa-reddit-alien"></i></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3 text-center">#}
+{#                        <div class="icon-circle">#}
+{#                            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ instance.title }}&summary={{ share_string }}&source={{ request.build_absolute_uri }}" class="iLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        {% endblock social %}#}
+{##}
+{#        <br/>#}
+
+<footer class="footer" >
+    <div id="footer-top">
+        <div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+                    <h4>Project Detail</h4>
+                    <div id="footer-offer">
+                        A few something about a project....
+					</div>
+				</div>
+                <div class="col-sm-4">
+                    <div id="footer-bottom">
+                        <br/>
+                        PROJECT-FALL-TON DUC THANG UNIVERSITY(2017-2018)
+                        <br/>
+                        Copyright &copy;2017-{% now 'Y' %}
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <h4>Contact us</h4>
+				<ul class="list-unstyled">
+                    <li><i class="fa fa-fw fa-envelope"></i> duyhenry250897@gmail.com</li>
+                    <li><i class="fa fa-fw fa-github"></i> Github Project</li>
+                </ul>
+				</div>
+			</div>
+		</div>
     </div>
 
 </footer>
+ <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+{% endblock footer %}
 
 </html>

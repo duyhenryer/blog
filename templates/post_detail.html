@@ -1,10 +1,70 @@
 {% extends "base.html" %}
 {% load urlify %}
-{#{% load crispy_forms_tags %}#}
+{% load crispy_forms_tags %}
 
     {% block head_title %}{{ instance.title }} | {{ block.super }}{% endblock head_title %}
 
 {% block content %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+        {% include "messages_display.html" %}
+
+    <div id="header" role="banner">
+            <ol class="breadcrumb">
+                <li class="selected">
+                    <a id="header-img" class="default-header" href="/" title=""> Share</a>
+                </li>
+                <li class="selected">
+                    <a class="choice" href="#">new</a>
+                </li>
+                <li class="selected">
+                    <a class="choice" href="#">recent</a>
+                </li>
+                <li class="selected">
+                    <a class="choice" href="#">top</a>
+                </li>
+                <li class="selected">
+                    <a class="choice" href="#">wiki</a>
+                </li>
+                <li class="selected">
+                    <a class="choice" href="#">hot</a>
+                </li>
+
+
+{#                <li >#}
+{#                    <a href='{% url "posts:list" %}'>want to join?</a>#}
+{#                </li>#}
+{#                <li class='sr-list'>#}
+{#                    <a href='{% url "create" %}'>create post</a>#}
+{#                </li>#}
+                {% block post_detail_link %}
+
+                {% endblock %}
+
+                {% if not request.user.is_authenticated %}
+                    <li class='pull-right'>
+                        <a href='{% url "register" %}'>register</a>
+                    </li>
+                    <li class='pull-right'>
+                        <a href='{% url "login" %}'>login</a>
+                    </li>
+
+                {% else %}
+                    <li class='pull-right'>
+                        <a href='{% url "logout" %}'>logout</a>
+                    </li>
+
+
+                {% endif %}
+
+
+
+            </ol>
+
+    </div>
 
     <div class="col-sm-6 col-sm-offset-3">
     {% if instance.image %}
@@ -12,9 +72,14 @@
     {% endif %}
         <h4> {{ title }} <small>{{ instance.timestamp }}</small></h4>
         {% if instance.user.get_full_name %}
-        <p>@{{ instance.user.get_full_name }}</p>
+        <p>   {{ instance.user.get_full_name }}</p>
+{#            @#}
         {% endif %}
 
+
+
+
+    {% block social %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <div class="container-fluid">
             <div class="row">
@@ -33,7 +98,7 @@
 
                     <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3 text-center">
                         <div class="icon-circle">
-                            <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ share_string }}" class="igoogle" title="Google+"><i class="fa fa-reddit"></i></a>
+                            <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ share_string }}" class="igoogle" title="Google+"><i class="fa fa-reddit-alien"></i></a>
                         </div>
                     </div>
 
@@ -46,7 +111,10 @@
                 </div>
             </div>
         </div>
-    <br/>
+
+        {% endblock social %}
+
+        <br/>
 
 {#        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">#}
 {#             Facebook#}
