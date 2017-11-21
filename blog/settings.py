@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,16 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    # 'i18n_helper'
+
     'social_django',
-     
-    # 'comments',
+    'django.contrib.sites',
+    # 'registration',
+    'comments',
     'posts',
     'accounts',
     'profiles',
     # 'authtools',
     # 'easy_thumbnails',
 
-]
+)
 # INSTALLED_APPS += ('django.contrib.sites', 'django.contrib.comments',)
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -65,7 +68,13 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
-LOGIN_URL = "/login/"
+REGISTRATION_OPEN = True  # If True, users can register
+ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.
+#LOGIN_REDIRECT_URL = '//'  # The page you want users to arrive at after they successful log in
+
+#LOGIN_URL = "/login/"
+LOGIN_URL = "/accounts/login/"
 LOGOUT_URL = 'logout'
 # LOGIN_REDIRECT_URL = 'home'
 ROOT_URLCONF = 'blog.urls'
@@ -131,7 +140,13 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
+
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
+
+
+SOCIALACCOUNT_PROVIDERS = {'facebook': {}, 'google':{}, 'twitter':{}}
 
 
 # Internationalization

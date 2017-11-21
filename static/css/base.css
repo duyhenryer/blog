@@ -1,3 +1,238 @@
-h1 {
-    color: #a41515;
+.container{
+    color: #1b262d;
+}
+
+.header {
+    background-color: #007BB6;
+}
+
+.tabmenu {
+    list-style-type: none;
+    white-space: normal;
+    display: inline-block;
+    margin: 5px;
+    vertical-align: bottom;
+
+}
+
+._red {
+    background: #ffffff;
+    color: #000000;
+    padding-top:inherit;
+
+}
+._nf81 {
+    background: #fafafa;
+    padding: 0;
+    order: 0;
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    margin: 0px;
+    align-items: stretch;
+    box-sizing: border-box;
+    height: 70px;
+}
+
+._na91 {
+    flex-basis: 75px;
+}
+._sl91 {
+    align-items:stretch;
+    box-sizing: border-box;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    flex-shrink: 0;
+}
+
+._tp {
+    align-items: center;
+}
+
+._5r {
+    height: 80px;
+    flex-direction: row;
+    max-width: 1010px;
+    width: 100%;
+    padding: 26px 40px;
+    justify-content: center;
+    transition: height .2s ease-in-out;
+}
+
+._ir {
+    flex: 1 9999 0;
+    min-width: 60px;
+
+    font: inherit;
+    /*font-size: 5px;*/
+
+    border: 0 solid #fafafa;
+
+}
+
+.wmd-panel {
+    margin-right: 10px !important;
+    margin-left: 20px !important;
+}
+
+
+._se {
+    margin-right: 500px;
+
+    /*-webkit-box-flex: 0;*/
+    /*flex: 0 1 auto;*/
+    min-width: 125px;
+    width: 500px;
+    height: 28px;
+}
+._rujh3 {
+    transition: opacity .2s ease-in-out;
+}
+
+.coreSpriteDesktopNavLogoAndWordmark {
+    background-position: -177px 0;
+    height: 35px;
+    width: 175px;
+}
+
+
+
+.metabar {
+    position: absolute;
+    display: block;
+    z-index: 500;
+    width: 100px;
+    font-size: 14px;
+    background: #1b262d;
+    color: rgba(0,0,0,.54);
+    font-family:"Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}
+h4 {
+    color: #007BB6;
+}
+
+.wmd-panel {
+    margin-right:0px;
+    margin-left: 0px;
+}
+
+
+/*body{*/
+    /*padding: 50px;*/
+/*}*/
+
+/*--------------------------------------------------------*/
+/*login*/
+
+
+
+/*=========================
+  Icons
+ ================= */
+
+/* footer social icons */
+ul.social-network {
+	list-style: none;
+	display: inline;
+	margin-left:0 !important;
+	padding: 0;
+}
+ul.social-network li {
+	display: inline;
+	margin: 0 5px;
+}
+
+
+/* footer social icons */
+.social-network a.icoRss:hover {
+	background-color: #F56505;
+}
+.social-network a.icoFacebook:hover {
+	background-color:#3B5998;
+}
+.social-network a.icoTwitter:hover {
+	background-color:#33ccff;
+}
+.social-network a.icoGithub:hover {
+	background-color:#808b9a;
+}
+
+.social-network a.icoLinkedin:hover {
+	background-color:#007BB6;
+}
+
+.social-network a.icoInstagram:hover {
+	background-color:#3F729B;
+}
+
+.social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i,
+.social-network a.icoGithub:hover i, .social-network a.icoLinkedin:hover i,
+.social-network a.icoInstagram:hover i {
+	color:#fff;
+}
+a.socialIcon:hover, .socialHoverClass {
+	color:#44BCDD;
+}
+
+.social-circle li a {
+	display:inline-block;
+	position:relative;
+	margin:0 auto 0 auto;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+	text-align:center;
+	width: 50px;
+	height: 50px;
+	font-size:20px;
+}
+.social-circle li i {
+	margin:0;
+	line-height:50px;
+	text-align: center;
+}
+
+.social-circle li a:hover i, .triggeredHover {
+	-moz-transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	-ms--transform: rotate(360deg);
+	transform: rotate(360deg);
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	transition: all 0.2s;
+}
+.social-circle i {
+	color: #fff;
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+	-o-transition: all 0.8s;
+	-ms-transition: all 0.8s;
+	transition: all 0.8s;
+}
+
+.icoFacebook {
+ background-color: #DFDCE3;
+}
+.icoTwitter {
+ background-color: #DFDCE3;
+}
+.icoGithub {
+ background-color: #DFDCE3;
+}
+.icoInstagram {
+ background-color: #DFDCE3;
+}
+
+/*----------------------------------------------------------------*/
+
+
+footer {
+    height: 100px;
+    background: #fafafa;
+    border-top: 0 solid #303030;
+    font-size: 14px;
 }
