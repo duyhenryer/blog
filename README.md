@@ -37,5 +37,12 @@ Email: duyhenry250897@gmail.com(personal)
 
 [x] Requirements in ```requirement.txt```
 
+###### Running 
+Update all!
+Step 1: python manage.py migrate 
+
+Step 2: python manage.py 
+
+Update after!
 
 [x] Contact us: [Telegram](https://t.me/duyhenryer)
