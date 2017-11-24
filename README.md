@@ -1,13 +1,18 @@
 ## bloger
 
 <Comming soon >
+  
 Lecturer:
-```
+  
+```angular2html
      MSc. Vu Dinh Hong 
 ```
-Email: ```vdhong@it.tdt.edu.vn```
+
+Email:```vdhong@it.tdt.edu.vn```
+  
 Trainers:
-```
+
+```angular2html
      MSc. Tran Trung Tin 
 ```
 
