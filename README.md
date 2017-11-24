@@ -33,13 +33,14 @@ Email: duyhenry250897@gmail.com(personal)
 ```
 ##### The report in `` docs```.
 
-##### Installing and Running
+#### Installing and Running
 
 [x] Requirements in ```requirement.txt```
 
 ###### Running 
 Update all!
-Step 1: python manage.py migrate 
+
+Step 1:  Start commandline   ```python manage.py migrate``` 
 
 Step 2: python manage.py 
 
