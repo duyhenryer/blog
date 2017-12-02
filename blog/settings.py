@@ -43,7 +43,7 @@ INSTALLED_APPS = (
     'social_django',
     'django.contrib.sites',
     # 'registration',
-    'comments',
+    # 'comments',
     'posts',
     'accounts',
     'profiles',
@@ -71,7 +71,7 @@ MIDDLEWARE = [
 REGISTRATION_OPEN = True  # If True, users can register
 ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window; you may, of course, use a different value.
 REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.
-#LOGIN_REDIRECT_URL = '//'  # The page you want users to arrive at after they successful log in
+LOGIN_REDIRECT_URL = '//'  # The page you want users to arrive at after they successful log in
 
 #LOGIN_URL = "/login/"
 LOGIN_URL = "/accounts/login/"
@@ -172,6 +172,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     #'/var/www/static/',
 ]
+
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 
 MEDIA_URL = "/media/"
