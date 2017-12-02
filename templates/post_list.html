@@ -17,15 +17,15 @@
                 <li class="selected">
                     <a class="choice" href="/create/">recent</a>
                 </li>
-                <li class="selected">
-                    <a class="choice" href="#">top</a>
-                </li>
-                <li class="selected">
-                    <a class="choice" href="#">wiki</a>
-                </li>
-                <li class="selected">
-                    <a class="choice" href="#">hot</a>
-                </li>
+{#                <li class="selected">#}
+{#                    <a class="choice" href="#">top</a>#}
+{#                </li>#}
+{#                <li class="selected">#}
+{#                    <a class="choice" href="#">wiki</a>#}
+{#                </li>#}
+{#                <li class="selected">#}
+{#                    <a class="choice" href="#">hot</a>#}
+{#                </li>#}
 
 {#                <li >#}
 {#                    <a href='{% url "posts:list" %}'>want to join?</a>#}
@@ -54,19 +54,34 @@
                 <li class="pull-right">
                     <a class="choice" href="edit_profile.html">edit</a>
                 </li>
+                    </ol>
+                <div class="center">
+                                    <form method='GET' action='' class='row'>
+
+                        <div class=' center col-sm-6'>
+
+                            <div class='input-group'>
+
+                                <input class='form-control' type='text' name='q' placeholder='Search posts' value='{{ request.GET.q }}'/>
+
+                                <span class='input-group-btn'>
+
+                                    <input class='btn btn-default' type='submit' value='Search' />
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+
+                </div>
+
 
                 {% endif %}
-            </ol>
-                <form method='GET' action='' class='row'>
-                <div class=' center col-sm-6'>
-                    <div class='input-group'>
-                        <input class='form-control' type='text' name='q' placeholder='Search posts' value='{{ request.GET.q }}'/>
-                        <span class='input-group-btn'>
-                              <input class='btn btn-default' type='submit' value='Search' />
-                        </span>
-                    </div>
-                </div>
-                </form>
+
 
 
     </div>
@@ -149,7 +164,7 @@
 
             </div>
         </div>
-        <hr/>
+
     </div>
 
 

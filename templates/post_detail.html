@@ -16,30 +16,9 @@
             <ol class="breadcrumb">
                 <li class="selected">
                     <a id="header-img" class="default-header" href="/" title=""> Share</a>
-{#                </li>#}
-{#                <li class="selected">#}
-{#                    <a class="choice" href="#">new</a>#}
-{#                </li>#}
-{#                <li class="selected">#}
-{#                    <a class="choice" href="#">recent</a>#}
-{#                </li>#}
-{#                <li class="selected">#}
-{#                    <a class="choice" href="#">top</a>#}
-{#                </li>#}
-{#                <li class="selected">#}
-{#                    <a class="choice" href="#">wiki</a>#}
-{#                </li>#}
-{#                <li class="selected">#}
-{#                    <a class="choice" href="#">hot</a>#}
+
                 </li>
 
-
-{#                <li >#}
-{#                    <a href='{% url "posts:list" %}'>want to join?</a>#}
-{#                </li>#}
-{#                <li class='sr-list'>#}
-{#                    <a href='{% url "create" %}'>create post</a>#}
-{#                </li>#}
                 {% block post_detail_link %}
 
                 {% endblock %}
@@ -57,11 +36,7 @@
                         <a href='{% url "logout" %}'>logout</a>
                     </li>
 
-
                 {% endif %}
-
-
-
             </ol>
 
     </div>
@@ -132,9 +107,9 @@
 {#            Reddit#}
 {#        </a>#}
 
+        <h4>Content</h4>
 
         {{ instance.content|linebreaks }}<br/>
-
 {##}
 {#        <div>#}
 {#       <p class="container">Commment</p>#}
@@ -159,7 +134,8 @@
 
 
 
-    <div>
+
+      <div>
 
         <p class='lead'>Comments</p>
         {% if request.user.is_authenticated %}
