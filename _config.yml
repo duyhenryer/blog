@@ -1,0 +1,32 @@
+# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
+
+paginate: 10 # pagination based on number of posts
+paginate_path: "page:num"
+exclude: ["bash.html"] # files to exclude
+highlighter: rouge
+markdown: kramdown
+disqus: blog
+google_analytics: 
+title: blog
+
+defaults:
+  -
+    scope:
+      path: "" # empty string for all files
+    values:
+      title: blog
+
+description: Stylish Jekyll Theme
+author:
+  name: dbyll
+  email: duyhenry250897@gmail.com
+  github: duyhenryer
+  twitter: duyhenryer250897
+  bio: Your stylish, minimalist theme!
+
+#rss_path: feed.xml
+categories_path: posts/base.html
+#tags_path: tags.html
+
+# set it as url of an image
+# sidebar_background_image: https://www.dropbox.com/s/g9h23zrycedxtk5/sky.png?raw=1
