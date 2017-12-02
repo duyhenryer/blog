@@ -5,16 +5,8 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
 # from comments.models import Comment
-from comments.models import Comment
 from django.utils import timezone
-
 from django.utils.text import slugify
-
-def upload_location(instance, filename):
-    PostModel = instance.__class__
-    new_id = PostModel.objects.order_by("id").last().id + 1
-    return "%s/%s" %(instance, filename)
-
 
 
 class PostManager(models.Manager):
@@ -22,6 +14,13 @@ class PostManager(models.Manager):
         # Post.objects.all() = super(PostManager, self).all()
         return super(PostManager, self).filter(draft=False).filter(publish__lte=timezone.now())
 
+def upload_location(instance, filename):
+    # filebase, extension = filename.split(".")
+    return "%s/%s" %(instance.id, filename)
+    # PostModel = instance.__class__
+    # new_id = PostModel.objects.order_by("id").last().id + 1
+
+    # return "%s/%s" %(new_id, filename)
 
 class Post(models.Model):
     # user
@@ -39,9 +38,9 @@ class Post(models.Model):
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
     # content = models.TextField()
-    draft = models.BooleanField(default=False)
-    publish = models.DateField(auto_now=False, auto_now_add=False)
-    read_time =  models.IntegerField(default=0) # models.TimeField(null=True, blank=True) #assume minutes
+    # draft = models.BooleanField(default=False)
+    # publish = models.DateField(auto_now=False, auto_now_add=False)
+    # read_time =  models.IntegerField(default=0) # models.TimeField(null=True, blank=True) #assume minutes
     # updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     # timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     #
@@ -61,11 +60,11 @@ class Post(models.Model):
         return reverse("posts:detail", kwargs={"slug": self.slug})
 
 
-    @property
-    def comments(self):
-        instance = self
-        qs = Comment.objects.filter_by_instance(instance)
-        return qs
+    # @property
+    # def comments(self):
+    #     instance = self
+    #     qs = Comment.objects.filter_by_instance(instance)
+    #     return qs
 
     @property
     def get_content_type(self):
