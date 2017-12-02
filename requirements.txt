@@ -1,0 +1,4 @@
+ Pillow
+ ocial-auth-app-django
+ django
+ django-crispy-forms
