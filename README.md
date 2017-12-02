@@ -31,19 +31,18 @@ Student: Van Duy Do
 ID :      51503157
 Email: duyhenry250897@gmail.com(personal)
 ```
-##### The report in `` docs```.
 
 #### Installing and Running
 
-[x] Requirements in ```requirement.txt```
+- Requirements in ```requirement.txt```
 
-###### Running 
+##### Running 
 Update all!
 
 Step 1:  Start commandline   ```python manage.py migrate``` 
 
-Step 2: python manage.py 
+Step 2: ```python manage.py makemigrations```
 
 Update after!
 
-[x] Contact us: [Telegram](https://t.me/duyhenryer)
+Contact us: [Telegram](https://t.me/duyhenryer)
