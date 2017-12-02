@@ -43,6 +43,8 @@ Step 1:  Start commandline   ```python manage.py migrate```
 
 Step 2: ```python manage.py makemigrations```
 
+Step 3: ```python manage.py runserver```
+
 Update after!
 
 Contact us: [Telegram](https://t.me/duyhenryer)
