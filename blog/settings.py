@@ -38,17 +38,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    # 'i18n_helper'
+    'markdown_deux',
+    'pagedown',
 
+    'comments',
     'social_django',
-    'django.contrib.sites',
-    # 'registration',
-    # 'comments',
     'posts',
-    'accounts',
-    'profiles',
-    # 'authtools',
-    # 'easy_thumbnails',
+
 
 )
 # INSTALLED_APPS += ('django.contrib.sites', 'django.contrib.comments',)

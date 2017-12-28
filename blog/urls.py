@@ -22,18 +22,18 @@ from django.conf.urls.static import static
 from accounts.views import (register_view, login_view, logout_view )
 from django.contrib.auth import views as auth_views
 
-
 urlpatterns = [
+
     url(r'^admin/', admin.site.urls),
+    url(r'^comments/', include("comments.urls", namespace='comments')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
+
     url(r'^register/', register_view, name='register'),
     url(r'^login/', login_view, name='login'),
     url(r'^logout/', logout_view, name='logout'),
-    url(r'^', include('posts.urls', namespace="posts")),
-    # url(r'^accounts/', include('registration.urls')),
-
+    url(r'^', include("posts.urls", namespace='posts')),
+    # url(r'^posts/$', "<appname>.views.<function_name>"),
 ]
-
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
