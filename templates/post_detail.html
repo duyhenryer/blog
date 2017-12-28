@@ -2,63 +2,42 @@
 {% load urlify %}
 {% load crispy_forms_tags %}
 
-    {% block head_title %}{{ instance.title }} | {{ block.super }}{% endblock head_title %}
+
+{% block head_title %}
+{{ instance.title }} | {{ block.super }}
+{% endblock head_title %}
+
+
+ {% block post_detail_link %}
+  <li><a href='{{ instance.get_absolute_url }}'>{{ instance.title }}</a></li>
+  {% endblock %}
 
 {% block content %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-
-        {% include "messages_display.html" %}
-
-    <div id="header" role="banner">
-            <ol class="breadcrumb">
-                <li class="selected">
-                    <a id="header-img" class="default-header" href="/" title=""> Share</a>
-
-                </li>
-
-                {% block post_detail_link %}
-
-                {% endblock %}
-
-                {% if not request.user.is_authenticated %}
-                    <li class='pull-right'>
-                        <a href='{% url "register" %}'>register</a>
-                    </li>
-                    <li class='pull-right'>
-                        <a href='{% url "login" %}'>login</a>
-                    </li>
-
-                {% else %}
-                    <li class='pull-right'>
-                        <a href='{% url "logout" %}'>logout</a>
-                    </li>
-
-                {% endif %}
-            </ol>
-
-    </div>
-
-    <div class="col-sm-6 col-sm-offset-3">
+<div class='col-sm-6 col-sm-offset-3'>
     {% if instance.image %}
-        <img src="{{ instance.image.url }}" class="img-thumbnail"/>
+    <img src='{{ instance.image.url }}' class='img-responsive' />
     {% endif %}
-        <h4> {{ title }} <small>{{ instance.timestamp }}</small></h4>
-        {% if instance.user.get_full_name %}
-        <p>   {{ instance.user.get_full_name }}</p>
-{#            @#}
-        {% endif %}
+<h3>{{ title }} <small>{% if instance.draft %}<span style='color:red;'>Draft</span> {% endif %}{{ instance.publish }}</small></h3>
 
+{#{% if instance.read_time|time:"i" <= "01" %} < 1 minute {% else %}{{ instance.read_time|time:"i" }} minutes {% endif %} #}
 
+{#<p>Read time: {% if instance.read_time <= 1 %} < 1 Minute {% else %}{{ instance.read_time }} minutes {% endif %}</p>#}
+{#{% if instance.user.get_full_name %}#}
+{#<p>Author: {{ instance.user.get_full_name }}</p>#}
+{#{% endif %}#}
 
+{#<hr/>#}
+{#</p>#}
 
+<br/>
     {% block social %}
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <div class="container-fluid">
             <div class="row">
                 <div class="sicon">
+
+
                     <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3 text-center">
                         <div class="icon-circle">
                             <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="ifacebook" title="Facebook"><i class="fa fa-facebook"></i></a>
@@ -76,7 +55,6 @@
                             <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ share_string }}" class="igoogle" title="Google+"><i class="fa fa-reddit-alien"></i></a>
                         </div>
                     </div>
-
                     <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3 text-center">
                         <div class="icon-circle">
                             <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ instance.title }}&summary={{ share_string }}&source={{ request.build_absolute_uri }}" class="iLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a>
@@ -87,55 +65,22 @@
             </div>
         </div>
 
-        {% endblock social %}
+    {% endblock social %}
+
 
         <br/>
-
-{#        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">#}
-{#             Facebook#}
-{#        </a>#}
-{##}
-{#        <a href="https://twitter.com/home?status={{ share_string }}%20{{ request.build_absolute_uri }}">#}
-{#            Twitter#}
-{#        </a>#}
-{##}
-{#        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ instance.title }}&summary={{ share_string }}&source={{ request.build_absolute_uri }}">#}
-{#            Linkedin#}
-{#        </a>#}
-{##}
-{#        <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ share_string }}.">#}
-{#            Reddit#}
-{#        </a>#}
-
         <h4>Content</h4>
+        <br/>
+    </p>
 
-        {{ instance.content|linebreaks }}<br/>
-{##}
-{#        <div>#}
-{#       <p class="container">Commment</p>#}
-{#        <form method="POST" action="." > {% csrf_token %}#}
-{#            {{ comment_form }}#}
-{#            <br/>#}
-{#            <input type="submit" value="create reply" class="btn btn-default">#}
-{#            <br/>#}
-{#        </form>#}
-{##}
-{#            <hr/>#}
-{#            {% for comment in comments %}#}
-{#                <blockquote>#}
-{#                {{ comment.content_object }}#}
-{#                <p> {{comment.content }}</p>#}
-{#                <footer>via {{ comment.user}} | {{comment.timestamp|timesince }} ago</footer>#}
-{#                </blockquote>#}
-{#            {% endfor %}#}
-{##}
-{#</div>#}
+<div class='row'>
+<div class='col-sm-12 '>
 
+   <div class='post-detail-item'>{{ instance.get_markdown }}</div>
 
-
-
-
-      <div>
+    <hr/>
+    <br/>
+    <div>
 
         <p class='lead'>Comments</p>
         {% if request.user.is_authenticated %}
@@ -169,13 +114,13 @@
         <p>You must login to comment </p>
         {% endif %}
         </div>
-
         </blockquote>
 
         <hr/>
         {% endfor %}
     </div>
+</div>
+</div>
+</div>
 
-
-    </div>
 {% endblock content %}
