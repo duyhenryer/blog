@@ -6,15 +6,13 @@ from django.contrib.auth import (
 
     )
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from .forms import UserLoginForm, UserRegisterForm
 
-from django.views.generic.base import TemplateView
+from .forms import UserLoginForm, UserRegisterForm
 
 def login_view(request):
     print(request.user.is_authenticated())
     next = request.GET.get('next')
-    title = "Want to join?"
+    title = "Login"
     form = UserLoginForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data.get("username")
@@ -30,7 +28,7 @@ def login_view(request):
 def register_view(request):
     print(request.user.is_authenticated())
     next = request.GET.get('next')
-    title = "Want to join?"
+    title = "Register"
     form = UserRegisterForm(request.POST or None)
     if form.is_valid():
         user = form.save(commit=False)
@@ -48,12 +46,6 @@ def register_view(request):
         "title": title
     }
     return render(request, "register.html", context)
-
-
-
-@login_required
-def home(request):
-    return render(request, 'home.html')
 
 
 def logout_view(request):
