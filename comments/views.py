@@ -9,10 +9,9 @@ from .forms import CommentForm
 from .models import Comment
 
 
-@login_required #(login_url='/login/') #LOGIN_URL = '/login/'
+@login_required
 def comment_delete(request, id):
-    #obj = get_object_or_404(Comment, id=id)
-    # obj = CommentFormmment.objects.get(id=id)
+
     try:
         obj = Comment.objects.get(id=id)
     except:
@@ -37,7 +36,6 @@ def comment_delete(request, id):
     return render(request, "confirm_delete.html", context)
 
 def comment_thread(request, id):
-    #obj = Comment.objects.get(id=id)
     try:
         obj = Comment.objects.get(id=id)
     except:
