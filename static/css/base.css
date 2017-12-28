@@ -96,9 +96,6 @@
     height: 35px;
     width: 175px;
 }
-
-
-
 .metabar {
     position: absolute;
     display: block;
@@ -117,14 +114,6 @@ h4 {
     margin-right:0px;
     margin-left: 0px;
 }
-
-
-/*body{*/
-    /*padding: 50px;*/
-/*}*/
-
-/*--------------------------------------------------------*/
-/*login*/
 
 
 
@@ -228,7 +217,28 @@ a.socialIcon:hover, .socialHoverClass {
 }
 
 /*----------------------------------------------------------------*/
+.wrapper {
+    border:1px solid #000;
+    display:inline-block;
+    position:relative;
+    height: auto;
+}
 
+input,
+button {
+    background-color:transparent;
+    border:0;
+}
+
+button {
+    position:absolute;
+    right:0;
+    top:0;
+}
+
+input {
+    padding-right:30px; /* button padding */
+}
 
 footer {
     height: 100px;
